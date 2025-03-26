@@ -1,0 +1,2 @@
+2025-03-27 02:16:10,505 - WARNING - Skipping row due to missing required field: email in {'name': 'Bob', 'email': '', 'role': 'user'}
+2025-03-27 02:16:12,559 - WARNING - Skipping row due to invalid email address: {'name': 'Daniel', 'email': 'danielexample.com', 'role': 'user'}

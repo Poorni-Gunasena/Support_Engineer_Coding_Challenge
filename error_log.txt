@@ -1,4 +1,0 @@
-2025-03-27 01:36:22,408 - ERROR - Skipping row due to missing required field: email in {'name': 'Bob', 'email': '', 'role': 'user'}
-2025-03-27 01:36:24,457 - ERROR - Skipping row due to invalid email address: {'name': 'Daniel', 'email': 'danielexample.com', 'role': 'user'}
-2025-03-27 01:37:09,106 - ERROR - Skipping row due to missing required field: email in {'name': 'Bob', 'email': '', 'role': 'user'}
-2025-03-27 01:37:11,162 - ERROR - Skipping row due to invalid email address: {'name': 'Daniel', 'email': 'danielexample.com', 'role': 'user'}

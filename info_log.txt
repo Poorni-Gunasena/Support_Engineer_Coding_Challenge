@@ -1,0 +1,4 @@
+2025-03-27 02:16:10,504 - INFO - User created successfully (Status 201): {'name': 'Alice', 'email': 'alice@example.com', 'role': 'admin'}
+2025-03-27 02:16:12,558 - INFO - User created successfully (Status 201): {'name': 'Charlie', 'email': 'charlie@example.com', 'role': 'moderator'}
+2025-03-27 02:16:14,605 - INFO - User created successfully (Status 201): {'name': 'Ethan', 'email': 'ethan@example.com', 'role': 'user'}
+2025-03-27 02:16:16,663 - INFO - User created successfully (Status 201): {'name': 'Fred', 'email': 'fred@example.com', 'role': 'admin'}

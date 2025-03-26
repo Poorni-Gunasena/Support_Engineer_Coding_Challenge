@@ -4,17 +4,40 @@ import logging
 import re
 
 def setup_logging():
-    logging.basicConfig(filename='error_log.txt', level=logging.ERROR, format="%(asctime)s - %(levelname)s - %(message)s")
+    logger = logging.getLogger()
+    logger.setLevel(logging.DEBUG)
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+
+    def create_handler(filename, level, filter_func=None):
+        handler = logging.FileHandler(filename)
+        handler.setLevel(level)
+        handler.setFormatter(formatter)
+        if filter_func:
+            f = logging.Filter()
+            f.filter = filter_func
+            handler.addFilter(f)
+        logger.addHandler(handler)
+        return handler
+
+    create_handler('error_log.txt', logging.ERROR, lambda record: record.levelno >= logging.ERROR)
+    create_handler('warning_log.txt', logging.WARNING, lambda record: logging.WARNING <= record.levelno < logging.ERROR)
+    create_handler('info_log.txt', logging.INFO, lambda record: record.levelno == logging.INFO)
 
 def log_error(msg):
     logging.error(msg)
+
+def log_warning(msg):
+    logging.warning(msg)
+
+def log_info(msg):
+    logging.info(msg)
 
 def create_users(row):
     print(f"Attempting to create user: {row}")
     try:
         response = requests.post("http://localhost:5000/api/create_user", json=row)
         print(f"Response Status Code: {response.status_code}")
-        print(f"Response Content: {response.text}")
+        log_info(f"User created successfully (Status {response.status_code}): {row}")
         if response.status_code != 201:
             log_error(f"Failed to create user (Status {response.status_code}): {row}")
     except requests.exceptions.RequestException as e:
@@ -26,7 +49,7 @@ def validate_row(row, required_fields):
     missing_required = False
     for field in required_fields:
         if not row.get(field):
-            log_error(f"Skipping row due to missing required field: {field} in {row}")
+            log_warning(f"Skipping row due to missing required field: {field} in {row}")
             missing_required = True
             break  
 
@@ -34,9 +57,12 @@ def validate_row(row, required_fields):
         return missing_required  
 
     if 'email' in row and re.match(email_pattern, row.get('email', '')) is None:
-        log_error(f"Skipping row due to invalid email address: {row}")
+        log_warning(f"Skipping row due to invalid email address: {row}")
         return True 
 
+    if 'email' in row and row['email']:
+        row['name'] = row.get('name') or row['email'].split('@')[0].capitalize()
+        
     print(f"Processing row: {row}")
     if 'role' in row and row['role'] == '':
         row['role'] = 'user'
