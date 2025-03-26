@@ -1,12 +1,4 @@
-2025-03-26 23:46:03,678 - ERROR - Skipping row due to missing required field: email in {'name': 'Bob', 'email': '', 'role': 'user'}
-2025-03-26 23:46:05,715 - ERROR - Skipping row due to invalid email address: {'name': 'Daniel', 'email': 'danielexample.com', 'role': 'user'}
-2025-03-27 00:25:29,123 - ERROR - Skipping row due to missing required field: email in {'name': 'Bob', 'email': '', 'role': 'user'}
-2025-03-27 00:25:31,174 - ERROR - Skipping row due to invalid email address: {'name': 'Daniel', 'email': 'danielexample.com', 'role': 'user'}
-2025-03-27 00:47:22,458 - ERROR - Skipping row due to missing required field: email in {'name': 'Bob', 'email': '', 'role': 'user'}
-2025-03-27 00:47:24,520 - ERROR - Skipping row due to invalid email address: {'name': 'Daniel', 'email': 'danielexample.com', 'role': 'user'}
-2025-03-27 00:47:45,490 - ERROR - Skipping row due to missing required field: email in {'name': 'Bob', 'email': '', 'role': 'user'}
-2025-03-27 00:47:47,545 - ERROR - Skipping row due to invalid email address: {'name': 'Daniel', 'email': 'danielexample.com', 'role': 'user'}
-2025-03-27 00:49:35,655 - ERROR - Skipping row due to missing required field: email in {'name': 'Bob', 'email': '', 'role': 'user'}
-2025-03-27 00:49:37,707 - ERROR - Skipping row due to invalid email address: {'name': 'Daniel', 'email': 'danielexample.com', 'role': 'user'}
-2025-03-27 00:50:32,059 - ERROR - Skipping row due to missing required field: email in {'name': 'Bob', 'email': '', 'role': 'user'}
-2025-03-27 00:50:34,147 - ERROR - Skipping row due to invalid email address: {'name': 'Daniel', 'email': 'danielexample.com', 'role': 'user'}
+2025-03-27 01:36:22,408 - ERROR - Skipping row due to missing required field: email in {'name': 'Bob', 'email': '', 'role': 'user'}
+2025-03-27 01:36:24,457 - ERROR - Skipping row due to invalid email address: {'name': 'Daniel', 'email': 'danielexample.com', 'role': 'user'}
+2025-03-27 01:37:09,106 - ERROR - Skipping row due to missing required field: email in {'name': 'Bob', 'email': '', 'role': 'user'}
+2025-03-27 01:37:11,162 - ERROR - Skipping row due to invalid email address: {'name': 'Daniel', 'email': 'danielexample.com', 'role': 'user'}

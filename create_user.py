@@ -20,8 +20,30 @@ def create_users(row):
     except requests.exceptions.RequestException as e:
         log_error(f"Failed to create user {row}: {e}")
 
-def read_csv(file_path, fields, required_fields):
+def validate_row(row, required_fields):
     email_pattern = r"[^@]+@[^@]+\.[^@]+"
+
+    missing_required = False
+    for field in required_fields:
+        if not row.get(field):
+            log_error(f"Skipping row due to missing required field: {field} in {row}")
+            missing_required = True
+            break  
+
+    if missing_required:
+        return missing_required  
+
+    if 'email' in row and re.match(email_pattern, row.get('email', '')) is None:
+        log_error(f"Skipping row due to invalid email address: {row}")
+        return True 
+
+    print(f"Processing row: {row}")
+    if 'role' in row and row['role'] == '':
+        row['role'] = 'user'
+    elif 'role' not in row:
+        row['role'] = 'user' 
+
+def read_csv(file_path, fields, required_fields):
     try:
         with open(file_path, 'r') as f:
             reader = csv.DictReader(f)
@@ -40,26 +62,8 @@ def read_csv(file_path, fields, required_fields):
                 return
 
             for row in reader:
-                missing_required = False
-                for field in required_fields:
-                    if not row.get(field):
-                        log_error(f"Skipping row due to missing required field: {field} in {row}")
-                        missing_required = True
-                        break  
-
-                if missing_required:
-                    continue  
-
-                if 'email' in row and re.match(email_pattern, row.get('email', '')) is None:
-                    log_error(f"Skipping row due to invalid email address: {row}")
-                    continue  
-
-                print(f"Processing row: {row}")
-                if 'role' in row and row['role'] == '':
-                    row['role'] = 'user'
-                elif 'role' not in row:
-                    row['role'] = 'user' 
-
+                if validate_row(row, required_fields):
+                    continue
                 create_users(row)
 
     except FileNotFoundError:
