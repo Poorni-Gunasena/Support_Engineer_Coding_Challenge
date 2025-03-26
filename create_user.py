@@ -1,5 +1,12 @@
 import csv
 import requests
+import logging
+
+def setup_logging():
+    logging.basicConfig(filename='error_log.txt', level=logging.ERROR, format="%(asctime)s - %(levelname)s - %(message)s")
+
+def log_error(msg):
+    logging.error(msg)
 
 def create_users(file_path):
     with open(file_path, 'r') as f:
@@ -11,8 +18,13 @@ def create_users(file_path):
                 print(f"Response Status Code: {response.status_code}")
                 print(f"Response Content: {response.text}")
                 if response.status_code != 201:
-                    print(f"Error creating user (Status {response.status_code}): {row['email']}")
+                    log_error(f"Failed to create user (Status {response.status_code}): {row}")
             except requests.exceptions.RequestException as e:
-                print(f"Error creating user {row['email']}: {e}")
+                log_error(f"Failed to create user {row}: {e}")
 
-create_users("users.csv")
+def main():
+    setup_logging()
+    create_users("users.csv")
+
+if __name__ == "__main__":
+    main()

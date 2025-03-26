@@ -1,0 +1,4 @@
+2025-03-26 15:57:59,047 - ERROR - Error creating user (Status 400): 
+2025-03-26 15:58:29,072 - ERROR - Error creating user (Status 400): {'name': 'Bob', 'email': '', 'role': 'user'}
+2025-03-26 15:58:38,888 - ERROR - Error creating user (Status 400): {'name': 'Bob', 'email': '', 'role': 'user'}
+2025-03-26 15:59:45,181 - ERROR - Failed to create user (Status 400): {'name': 'Bob', 'email': '', 'role': 'user'}
