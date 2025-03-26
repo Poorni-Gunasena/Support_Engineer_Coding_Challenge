@@ -2,6 +2,7 @@ import csv
 import requests
 import logging
 import re
+import argparse
 
 def setup_logging():
     logger = logging.getLogger()
@@ -108,11 +109,15 @@ def read_csv(file_path, fields, required_fields):
         log_error(f"Unexpected error: {e}")
 
 def main():
+    parser = argparse.ArgumentParser(description="User creation script")
+    parser.add_argument('csv_file', type=str, help="Path to the CSV file containing user data")
+
+    args = parser.parse_args()
     setup_logging()
 
     fields = ['name','email','role']
     required_fields = ['email']
-    read_csv("users.csv", fields, required_fields)
+    read_csv(args.csv_file, fields, required_fields)
 
 if __name__ == "__main__":
     main()
