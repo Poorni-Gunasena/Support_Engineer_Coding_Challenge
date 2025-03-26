@@ -32,16 +32,24 @@ def log_warning(msg):
 def log_info(msg):
     logging.info(msg)
 
-def create_users(row):
+def create_users(row, max_retries=3):
     print(f"Attempting to create user: {row}")
-    try:
-        response = requests.post("http://localhost:5000/api/create_user", json=row)
-        print(f"Response Status Code: {response.status_code}")
-        log_info(f"User created successfully (Status {response.status_code}): {row}")
-        if response.status_code != 201:
-            log_error(f"Failed to create user (Status {response.status_code}): {row}")
-    except requests.exceptions.RequestException as e:
-        log_error(f"Failed to create user {row}: {e}")
+    retries = 0
+    while max_retries > retries:
+        try:
+            response = requests.post("http://localhost:5000/api/create_user", json=row)
+            print(f"Response Status Code: {response.status_code}")
+            if response.status_code == 201:
+                log_info(f"User created successfully (Status {response.status_code}): {row}")
+                return
+            else:
+                log_error(f"Failed to create user (Status {response.status_code}): {row}")
+        except requests.exceptions.RequestException as e:
+            log_error(f"Failed to create user {row}: {e}")
+        
+        retries += 1
+    
+    log_error(f"Failed to create user {row} after {max_retries} attempts.")
 
 def validate_row(row, required_fields):
     email_pattern = r"[^@]+@[^@]+\.[^@]+"
