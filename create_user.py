@@ -12,6 +12,9 @@ def create_users(file_path):
     with open(file_path, 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
+            if row['email'] == '':
+                continue
+            
             print(f"Attempting to create user: {row}")
             try:
                 response = requests.post("http://localhost:5000/api/create_user", json=row)
