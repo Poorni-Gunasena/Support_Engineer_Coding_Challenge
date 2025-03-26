@@ -2,3 +2,5 @@ name,email,role
 Alice,alice@example.com,admin
 Bob,,user
 Charlie,charlie@example.com,moderator
+Daniel,danielexample.com,user
+Ethan,ethan@example.com,
