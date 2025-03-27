@@ -1,8 +1,0 @@
-2025-03-27 02:16:10,505 - WARNING - Skipping row due to missing required field: email in {'name': 'Bob', 'email': '', 'role': 'user'}
-2025-03-27 02:16:12,559 - WARNING - Skipping row due to invalid email address: {'name': 'Daniel', 'email': 'danielexample.com', 'role': 'user'}
-2025-03-27 02:24:08,557 - WARNING - Skipping row due to missing required field: email in {'name': 'Bob', 'email': '', 'role': 'user'}
-2025-03-27 02:24:10,606 - WARNING - Skipping row due to invalid email address: {'name': 'Daniel', 'email': 'danielexample.com', 'role': 'user'}
-2025-03-27 02:25:00,738 - WARNING - Skipping row due to missing required field: email in {'name': 'Bob', 'email': '', 'role': 'user'}
-2025-03-27 02:25:10,944 - WARNING - Skipping row due to invalid email address: {'name': 'Daniel', 'email': 'danielexample.com', 'role': 'user'}
-2025-03-27 02:28:30,941 - WARNING - Skipping row due to missing required field: email in {'name': 'Bob', 'email': '', 'role': 'user'}
-2025-03-27 02:28:32,980 - WARNING - Skipping row due to invalid email address: {'name': 'Daniel', 'email': 'danielexample.com', 'role': 'user'}
