@@ -29,7 +29,8 @@ name,email,role
 ### 4. Automatic Retries for API Calls  
 - If user creation fails, the script retries **up to 3 times** before logging an error.  
 
-### Run the Script
+## Run the Script 
+
 Execute the following command, passing the path to your CSV file as an argument:
 
 ```sh
